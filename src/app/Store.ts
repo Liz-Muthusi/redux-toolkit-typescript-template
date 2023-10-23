@@ -1,0 +1,19 @@
+import { configureStore } from "@reduxjs/toolkit";
+import CakeReducer from "./features/cake/CakeSlice";
+import CreamReducer from "./features/icecream/CreamSlice";
+import UserReducer from "./features/users/UserSlice";
+
+const store = configureStore({
+  reducer: {
+    cakes: CakeReducer,
+    creams: CreamReducer,
+    users: UserReducer,
+  },
+});
+export default store;
+// Infer the 'RootState' and AppDispatch from the store itself
+
+export type RootState=ReturnType<typeof store.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users:UsersState}
+
+export type AppDispatch=typeof store.dispatch
